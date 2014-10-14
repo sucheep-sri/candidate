@@ -1,4 +1,8 @@
-var input = ['a', 'b', 'ccc', 'ddd'];
+/*PS. can change value in array or add more item in array at the firt line in q5() function 
+(ex. var input =['aa','bba','cca','afgf','a245g']) 
+and it is included no character present case.
+*/
+var input = ['aghkafgklt', 'dfghako', 'qwemnaarkf']; // !!! change input here !!!
 var tempAllCharArr = [];
 var allCharArr = [];
 var eachCharArr = [];

@@ -1,4 +1,4 @@
-var input = 10;
+var input = 10;  // !!! change input here !!!
 var output = [];
 var first, second, third;
 for(var i =0; i<=input; i++)
