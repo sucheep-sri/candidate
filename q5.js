@@ -2,7 +2,7 @@
 (ex. var input =['aa','bba','cca','afgf','a245g']) 
 and it is included no character present case.
 */
-var input = ['aghkafgklt', 'dfghako', 'qwemnaarkf']; // !!! change input here !!!
+var input = ['aaaba','aab','abac','abaad','aabd']; // !!! change input here !!!
 var tempAllCharArr = [];
 var allCharArr = [];
 var eachCharArr = [];
@@ -52,11 +52,11 @@ for(var i =0; i<=allCharArr.length-1; i++)
 }
 if(charPresent.length == 0)
 {
-	console.log(input.length + " // have no character is present in all " + input.length + " string");
+	console.log(charPresent.length + " // have no character is present in all " + input.length + " string");
 }
 else
 {
-	console.log(input.length + " // " + charPresent + " are present in all " + input.length + " string");
+	console.log(charPresent.length + " // " + charPresent + " are present in all " + input.length + " string");
 }
 
 
