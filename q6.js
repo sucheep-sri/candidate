@@ -31,7 +31,6 @@ function checkSwap(item, i, j, k)
 	temp.push([k,j,i]);
 	temp.push([j,i,k]);
 	temp.push([j,k,i]);
-
 	for(var a =0; a<=temp.length-1; a++)
 	{
 		for(var b =0; b<=item.length-1; b++)
