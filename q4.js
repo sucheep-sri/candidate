@@ -8,7 +8,7 @@ In put the 3 of 'X' by index at x1, x2, x3 and input stating and ending point by
 [5,1],[5,2],[5,3],[5,4],[5,5]
 ////////////////
 */
-var x1 = [3,3]; // !!! change first X here !!!
+var x1 = [2,3]; // !!! change first X here !!!
 var x2 = [4,4]; // !!! change second X here !!!
 var x3 = [5,3]; // !!! change third X  here !!!
 var start = [4,5];  // !!! change starting point here !!!
@@ -17,6 +17,8 @@ var indexMetrix = [];
 var inputMetrix = [];
 
 var tempIndex = start;
+var vTemp = [];
+var sTemp = [];
 var step = 0;
 var block = 0;
 
@@ -54,111 +56,123 @@ for(var i =0; i<=indexMetrix.length-1; i++)
 	}
 }
 
-
-//while(tempIndex != end)
-//{
-	/*for(var i =parseInt(start[0]); i<=5; i++)
+	for(var i =parseInt(start[0]); i>0; i--) // go left in horizontal !
 	{
-		/*for(var j =parseInt(start[1]); j<=5; j++)
-		{
-			tempIndex = [i,j];
-			if(tempIndex.toString() != x1.toString() || tempIndex.toString() != x2.toString() || tempIndex.toString() != x3.toString())
-			{
-				step++;
-			}
-			if(tempIndex.toString() == x1.toString() )
-			{
-				step = 0;
-				j=0;
-			}
-			if(tempIndex.toString() == x2.toString() )
-			{
-				step = 0;
-				j=0;
-			}
-			if(tempIndex.toString() == x3.toString() )
-			{
-				step = 0;
-				j=0;
-			}
-		}
-		console.log("tempIndex of plus : " + tempIndex);
-	}*/
-
-	for(var i =parseInt(start[0]); i>0; i--)
-	{
-		step = parseInt(start[0])-parseInt(i);
-
+		console.log("*****check i at : " + i);
 		for(var j =parseInt(start[1]); j>0; j--)
 		{
 			tempIndex = [i,j];
-
-			//step = doTraverse(step, tempIndex, x1, x2, x3, i, j);
-
-			if(j < parseInt(start[0]) && i < parseInt(start[1]))
+			console.log("*****check  at : " + tempIndex);
+			if(tempIndex.toString() == end.toString()) //if end found
 			{
-				for(var k = i; k>0; k--)
+				console.log("Found end point ! Step : "+step);
+			}
+
+			if(tempIndex.toString() != end.toString()) // if end unfound
+			{
+				if(j<start[1])// check vertical
 				{
-					tempIndex = [i,k];
-					console.log(" step : " + step +"each column at : "+tempIndex);
-				}
+					sTemp = step;
+					for(var k = i-1; k>0; k--) // check vertical up
+					{
+						sTemp++;
+						vTemp = [k,j];
+						console.log("At : " + vTemp + " step : " + sTemp);
+						if(tempIndex.toString() == end.toString()) //if end found
+						{
+							console.log("Found end point ! Step : "+step);
+						}
+					}
+					sTemp = step;
+					for(var l = i+1; l<=5; l++) // check vertical down
+					{
+						sTemp++;
+						vTemp = [l,j];
+						console.log("At : " + vTemp + " step : " + sTemp);
+						if(tempIndex.toString() == end.toString()) //if end found
+						{
+							console.log("Found end point ! Step : "+step);
+						}
+					}
+				}	
 			}
-			if(tempIndex.toString() != x1.toString() || tempIndex.toString() != x2.toString() || tempIndex.toString() != x3.toString())
-			{
-				step++;
-				console.log(" step : " + step +" at index : " + tempIndex);
-			}
-			if(tempIndex.toString() == x2.toString())
-			{
-				step = 0;
-				j = 0;
-				tempIndex = [];
-				//console.log("found x2 at step: " + step);
-			}
-			if(tempIndex.toString() == end.toString())
+
+			step++;
+		}
+		step = 0;
+		step++;
+	}
+	if(tempIndex.toString() != end.toString())// go right in horizontal !
+	{
+		step = 0;
+		console.log("GO RIGHT ! ");
+		for(var i =parseInt(start[0]); i<=5; i++) 
+		{
+			for(var j =parseInt(start[1]); j<=5; j++)
 			{
 				tempIndex = [i,j];
-				console.log("Found and step : " + step );
-				//break;
-			}
+				console.log("At : " + tempIndex + " step : " + step);
 
+				if(tempIndex.toString() == end.toString()) //if end found
+				{
+					console.log("Found end point ! Step : "+step);
+				}
+				else if(tempIndex.toString() != end.toString()) // if end unfound
+				{
+					if(j>start[1])
+					{
+						sTemp = step;
+						for(var k = i-1; k>0; k--) // check vertical up
+						{
+							sTemp++;
+							vTemp = [k,j];
+							console.log("At : " + vTemp + " step : " + sTemp);
+							if(tempIndex.toString() == end.toString()) //if end found
+							{
+								console.log("Found end point ! Step : "+step);
+							}
+						}
+						sTemp = step;
+						for(var l = i+1; l<=5; l++) // check vertical down
+						{
+							sTemp++;
+							vTemp = [l,j];
+							console.log("At : " + vTemp + " step : " + sTemp);
+							if(tempIndex.toString() == end.toString()) //if end found
+							{
+								console.log("Found end point ! Step : "+step);
+							}
+						}
+					}	
+				}
+				step++;
+			}
+			step = 0;
+			step++;
 		}
-		//console.log("tempIndex of minus : " + tempIndex);
-	}
-	//console.log("step of minus : " + step);
-//}
+	}		
+
+	
 
 //console.log("S to E is : " + step);
 
-function doTraverse(step, tempIndex, x1, x2, x3, i, j)
+function checkX(tempIndex, x1, x2, x3)
 {
-	var Step = step
-	/*if(j < parseInt(start[0]) && i < parseInt(start[1]))
+	/*if(tempIndex.toString() == x1.toString())
 	{
-		for(var k = i; k>0; k--)
-		{
-			tempIndex = [i,k];
-			Step++;
-		}
+		return false;
 	}*/
-
-	if(tempIndex.toString() != x1.toString() || tempIndex.toString() != x2.toString() || tempIndex.toString() != x3.toString())
-	{
-		Step++;
-		console.log(" step : " + step +" at index : " + tempIndex);
-	}
 	if(tempIndex.toString() == x2.toString())
 	{
-		Step = 0;
-		j = 0;
-		tempIndex = [];
-		//console.log("found x2 at step: " + step);
+		return false;
 	}
-	if(tempIndex.toString() == end.toString())
+	else
 	{
-		tempIndex = [i,j];
-		console.log("Found and step : " + Step );
-		//break;
+		return true;
 	}
-	return Step;
+	/*if(tempIndex.toString() == x3.toString())
+	{
+		return false;
+	}*/
+	
 }
