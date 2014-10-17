@@ -9,9 +9,9 @@ In put the 3 of 'X' by index at x1, x2, x3 and input stating and ending point by
 ////////////////
 */
 var x1 = [2,3]; // !!! change first X here !!!
-var x2 = [4,4]; // !!! change second X here !!!
+var x2 = [4,3]; // !!! change second X here !!!
 var x3 = [5,3]; // !!! change third X  here !!!
-var start = [4,5];  // !!! change starting point here !!!
+var start = [4,4];  // !!! change starting point here !!!
 var end = [4,2];  // !!! change ending point here !!!
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -21,8 +21,8 @@ var tempIndex = start;
 var vTemp = [];
 var sTemp = [];
 var step = 0;
-var blocker = false;
-var rowBlocker = [];
+var endFound = false;
+var xFound = true;
 var answer = 0;
 
 createIndexMetrix();
@@ -33,33 +33,33 @@ console.log("Here S is the starting point and E is the Ending point. Shortest pa
 
 function traverse()
 {
-	for(var i =parseInt(start[0]); i>0; i--) // go left in horizontal !
+	for(var i =parseInt(start[0]); i>0; i--) // go left horizon and up vertical
 	{
 		for(var j =parseInt(start[1]); j>0; j--)
 		{
 			tempIndex = [i,j];
-			console.log("-------------------------------check row at : " + tempIndex + "-------------------------------");
+			console.log("-------------------------------check row at : " + i + "-------------------------------");
 			checkX(tempIndex);
-			checkRowBlocker(i);
-			console.log("At : " + tempIndex + " step : " + step + " blocker: " + blocker);
-			if(checkEndPoint(tempIndex, step))
+			checkEndPoint(tempIndex, step);
+			//checkRowBlocker(i);
+			console.log("At : " + tempIndex + " step : " + step );
+			if(endFound == true && xFound == false)
 			{
 				console.log("************ Found Shortest !" + answer);
 			}
-			//checkEndPoint(tempIndex, step);
-				if(tempIndex.toString() != end.toString()) // if end unfound
+			else
+			{
+				if(j<start[1])// check vertical
 				{
-					if(j<start[1])// check vertical
-					{
-						checkInsideVertical(step, i, j);
-					}	
-				}
+					checkInsideVertical(step, i, j);
+				}	
+			}
 			step++;
 		}
 		step = 0;
 		step++;
 	}
-	if(tempIndex.toString() != end.toString())// go right in horizontal !
+	if(tempIndex.toString() != end.toString()) // go right horizon and up vertical
 	{
 		step = 0;
 		console.log("GO RIGHT ! ");
@@ -68,22 +68,22 @@ function traverse()
 			for(var j =parseInt(start[1]); j<=5; j++)
 			{
 				tempIndex = [i,j];
-				console.log("-------------------------------check row at : " + tempIndex + "-------------------------------");
+				console.log("-------------------------------check row at : " + i + "-------------------------------");
 				checkX(tempIndex);
-				checkRowBlocker(i);
-				console.log("At : " + tempIndex + " step : " + step + " blocker: " + blocker);
-				if(checkEndPoint(tempIndex, step))
+				checkEndPoint(tempIndex, step);
+				//checkRowBlocker(i);
+				console.log("At : " + tempIndex + " step : " + step );
+				if(endFound == true && xFound == false)
 				{
 					console.log("************ Found Shortest !" + answer);
 				}
-				//checkEndPoint(tempIndex, step);
-				if(tempIndex.toString() != end.toString()) // if end unfound
+				else
 				{
 					if(j>start[1])
 					{
 						checkInsideVertical(step, i, j);
 					}	
-				}
+				}	
 				step++;
 			}
 			step = 0;
@@ -100,8 +100,9 @@ function checkInsideVertical(step, i, j)
 		sTemp++;
 		vTemp = [k,j];
 		checkX(vTemp);
-		console.log("At : " + vTemp + " step : " + sTemp + " blocker: " + blocker);
-		if(checkEndPoint(vTemp, sTemp))
+		checkEndPoint(vTemp, sTemp);
+		console.log("At : " + vTemp + " step : " + sTemp );
+		if(endFound == true && xFound == false)
 		{
 			console.log("************ Found Shortest !" + answer);
 		}
@@ -113,8 +114,9 @@ function checkInsideVertical(step, i, j)
 		sTemp++;
 		vTemp = [l,j];
 		checkX(vTemp);
-		console.log("At : " + vTemp + " step : " + sTemp + " blocker: " + blocker);
-		if(checkEndPoint(vTemp, sTemp))
+		checkEndPoint(vTemp, sTemp);
+		console.log("At : " + vTemp + " step : " + sTemp );
+		if(endFound == true && xFound == false)
 		{
 			console.log("************ Found Shortest ! " + answer);
 		}
@@ -127,47 +129,47 @@ function checkX(tempIndex)
 	if(tempIndex.toString() == x1.toString())
 	{
 		console.log("///////////////////////////////////////////Found X1 AT : "+tempIndex); 
-		blocker =  false;
+		xFound = true;
 		//return false;
 	}
 	if(tempIndex.toString() == x2.toString())
 	{
 		console.log("///////////////////////////////////////////Found X2 AT : "+tempIndex); 
-		blocker = false;
+		xFound = true;
 		//return false;
 	}
 	if(tempIndex.toString() == x3.toString())
 	{
 		console.log("///////////////////////////////////////////Found X3 AT : "+tempIndex); 
-		blocker = false;
+		xFound = true;
 		//return false;
 	}
 	if(tempIndex.toString() != x1.toString() && tempIndex.toString() != x2.toString() && tempIndex.toString() != x3.toString())
 	{
-		blocker = true;
+		xFound = false;
 		//return true;
 	}
 }
 
-function checkRowBlocker(i)
+/*function checkRowBlocker(i)
 {
 	if(blocker == false)
 	{
 		rowBlocker.push(false);
 		console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++Row blocker at row : " + rowBlocker);
 	}
-}
+}*/
 function checkEndPoint(tempIndex, step)
 {
-	if(tempIndex.toString() == end.toString() && blocker == true) //if end found
+	if(tempIndex.toString() == end.toString()) //if end found
 	{
 		console.log("*******************************************Found end point ! Step : " + step + " END POINT AT : " +tempIndex);
 		answer = step;
-		return true;
+		endFound = true;
 	}
 	else
 	{
-		return false;
+		endFound = false;
 	}
 }
 
