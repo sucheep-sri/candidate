@@ -1,12 +1,16 @@
 var fibo = [];
 
-for(var i = 0; i <=15; i++){
+for(var i = 0; i <=1000; i++){
     if(i == 0){fibo[i] = 0;}
     else if(i == 1){fibo[i] = 1;}
     else {
         fibo.push(fibo[i-1] + fibo[i-2]);
     }
-    if(isPrime(fibo[i])) {console.log(fibo[i] + " is prime num");}
+    if(isPrime(fibo[i])) 
+    {
+        //console.log(fibo[i] + " is prime num");
+        console.log(fibo[i]);
+    }
 }
 
 function isPrime(n)

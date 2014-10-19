@@ -33,7 +33,6 @@ for(var i =0; i<=tempAllCharArr.length-1; i++)
 	}
 }
 
-
 for(var i =0; i<=allCharArr.length-1; i++)
 {
 	for(var j = 0; j<=eachCharArr.length-1; j++)
@@ -50,6 +49,8 @@ for(var i =0; i<=allCharArr.length-1; i++)
 	}
 	found = 0;
 }
+
+console.log("INPUT : " + input);
 if(charPresent.length == 0)
 {
 	console.log(charPresent.length + " // have no character is present in all " + input.length + " string");

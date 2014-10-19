@@ -8,7 +8,9 @@ Choose index in metrix that have to be '0'
 for example, want index [2,3] to be 0 : var input = [2,3]
 and the others index will be '-1'
 */
-var input = [1,2]; // !!! change input here !!!
+/*********************** INPUT******************/
+var input = [1,2]; // !!! change index of 0 here !!!
+/*********************** INPUT******************/
 
 var indexMetrix = [];
 var inputMetrix = [];

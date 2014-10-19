@@ -8,12 +8,15 @@ In put the 3 of 'X' by index at x1, x2, x3 and input stating and ending point by
 [5,1],[5,2],[5,3],[5,4],[5,5]
 ////////////////
 */
+/*********************** INPUT******************/
 var x1 = [2,3]; // !!! change first X here !!!
-var x2 = [4,1]; // !!! change second X here !!!
-var x3 = [5,5]; // !!! change third X  here !!!
-var start = [2,1];  // !!! change starting point here !!!
-var end = [4,4];  // !!! change ending point here !!!
-///////////////////////////////////////////////////////////////////////////////////////////////////////
+var x2 = [3,3]; // !!! change second X here !!!
+var x3 = [1,4]; // !!! change third X  here !!!
+var start = [2,4];  // !!! change starting point here !!!
+var end = [1,3];  // !!! change ending point here !!!
+/*********************** INPUT******************/
+
+
 
 var indexMetrix = [];
 var inputMetrix = [];
@@ -37,17 +40,17 @@ function traverse()
 {
 	for(var i =parseInt(start[0]); i>0; i--) // go up
 	{	
-			console.log("UP");
+			//console.log("UP");
 			goLeft(i, step);
 			goRight(i, step);
 
 		step++;
 	}
 	step = 0;
-	console.log("                         ------------------------- END UP -----------------------");
+	//console.log("                         ------------------------- END UP -----------------------");
 	for(var i =parseInt(start[0]); i<=5; i++) // go down
 	{	
-			console.log("DOWN");
+			//console.log("DOWN");
 			goLeft(i, step);
 			goRight(i,step);
 
@@ -66,10 +69,10 @@ function goLeft(i, step)
 	{
 		tempIndex = [i,j];
 		checkX(tempIndex);
-		console.log("    LEFT  at : " + tempIndex + " step : " + stepTemp );
+		//console.log("    LEFT  at : " + tempIndex + " step : " + stepTemp );
 		if(xFound)
 		{
-			console.log("BREAK THIS ROW !" + j);
+			//console.log("BREAK THIS ROW !" + j);
 			break;
 		}
 		checkEndPoint(tempIndex, stepTemp);
@@ -89,10 +92,10 @@ function goRight(i,step)
 	{
 		tempIndex = [i,j];
 		checkX(tempIndex);
-		console.log("    RIGHT  at : " + tempIndex + " step : " + stepTemp );
+		//console.log("    RIGHT  at : " + tempIndex + " step : " + stepTemp );
 		if(xFound)
 		{
-			console.log("BREAK THIS ROW !" + j);
+			//console.log("BREAK THIS ROW !" + j);
 			break;
 		}
 		checkEndPoint(tempIndex, stepTemp);
@@ -112,10 +115,10 @@ function up_firstLevel(row, col, step)
 	{
 		tempIndex = [i, col];
 		checkX(tempIndex);
-		console.log("          UP    at : " + tempIndex + " step : " + stepTemp );
+		//console.log("          UP    at : " + tempIndex + " step : " + stepTemp );
 		if(xFound)
 		{
-			console.log("BREAK THIS COLUMN !" + i);
+			//console.log("BREAK THIS COLUMN !" + i);
 			break;
 		}
 		checkEndPoint(tempIndex, stepTemp);
@@ -133,10 +136,10 @@ function down_firstLevel(row, col, step)
 	{
 		tempIndex = [i, col];
 		checkX(tempIndex);
-		console.log("          DOWN  at : " + tempIndex + " step : " + stepTemp );
+		//console.log("          DOWN  at : " + tempIndex + " step : " + stepTemp );
 		if(xFound)
 		{
-			console.log("BREAK THIS COLUMN !" + i);
+			//console.log("BREAK THIS COLUMN !" + i);
 			break;
 		}
 		checkEndPoint(tempIndex, stepTemp);
@@ -155,10 +158,10 @@ function left_secondLevel(row, col, step)
 	{
 		tempIndex = [row, j];
 		checkX(tempIndex);
-		console.log("                    LEFT  at : " + tempIndex + " step : " + stepTemp );
+		//console.log("                    LEFT  at : " + tempIndex + " step : " + stepTemp );
 		if(xFound)
 		{
-			console.log("BREAK THIS ROW !" + j);
+		//	console.log("BREAK THIS ROW !" + j);
 			break;
 		}
 		checkEndPoint(tempIndex, stepTemp);
@@ -174,10 +177,10 @@ function right_secondLevel(row, col, step)
 	{
 		tempIndex = [row, j];
 		checkX(tempIndex);
-		console.log("                    RIGHT  at : " + tempIndex + " step : " + stepTemp );
+		//console.log("                    RIGHT  at : " + tempIndex + " step : " + stepTemp );
 		if(xFound)
 		{
-			console.log("BREAK THIS ROW !" + j);
+			//console.log("BREAK THIS ROW !" + j);
 			break;
 		}
 		checkEndPoint(tempIndex, stepTemp);
@@ -189,7 +192,7 @@ function checkEndPoint(tempIndex, step)
 {
 	if(tempIndex.toString() == end.toString()) //if end found
 	{
-		console.log("***************************Found end point ! Step : " + step + " END POINT AT : " +tempIndex);
+		//console.log("***************************Found end point ! Step : " + step + " END POINT AT : " +tempIndex);
 		answerArr.push([step]);
 	}
 }
@@ -201,17 +204,17 @@ function checkX(tempIndex)
 {
 	if(tempIndex.toString() == x1.toString())
 	{
-		console.log(" !!!!! Found X1 at : "+tempIndex); 
+	//	console.log(" !!!!! Found X1 at : "+tempIndex); 
 		xFound = true;
 	}
 	if(tempIndex.toString() == x2.toString())
 	{
-		console.log(" !!!!! Found X2 at : "+tempIndex); 
+	//	console.log(" !!!!! Found X2 at : "+tempIndex); 
 		xFound = true;
 	}
 	if(tempIndex.toString() == x3.toString())
 	{
-		console.log(" !!!!! Found X3 at : "+tempIndex); 
+	//	console.log(" !!!!! Found X3 at : "+tempIndex); 
 		xFound = true;
 	}
 	if(tempIndex.toString() != x1.toString() && tempIndex.toString() != x2.toString() && tempIndex.toString() != x3.toString())

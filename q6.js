@@ -44,4 +44,5 @@ function checkSwap(item, i, j, k)
 	return true;
 }
 
+console.log("INPUT : " + input);
 console.log(output);
