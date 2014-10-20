@@ -17,6 +17,11 @@ var task7 = 8;
 var task8 = 8;
 /*********************** INPUT******************/
 
+
+
+
+
+
 var server = [];
 var task = [];
 var taskAvailable = [];

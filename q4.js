@@ -18,6 +18,8 @@ var end = [1,3];  // !!! change ending point here !!!
 
 
 
+
+
 var indexMetrix = [];
 var inputMetrix = [];
 var vTemp = [];

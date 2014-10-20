@@ -1,20 +1,35 @@
+/*********************** INPUT******************/
 var input = 10;  // !!! change input here !!!
+/*********************** INPUT******************/
+
+
+
+
+
+
 var output = [];
-var first, second, third;
-for(var i =0; i<=input; i++)
-{	
-	for(var j =0; j<=input; j++)
-	{
-		for(var k=0; k<=input; k++)
+doSwap();
+console.log("INPUT : " + input);
+console.log(output);
+
+function doSwap()
+{
+	var first, second, third;
+	for(var i =0; i<=input; i++)
+	{	
+		for(var j =0; j<=input; j++)
 		{
-			if(i+j+k == input)
+			for(var k=0; k<=input; k++)
 			{
-				if(output.length == 0) {output.push([i,j,k]);}
-				else if(output.length>0)
+				if(i+j+k == input)
 				{
-					if(checkSwap(output, i, j, k))
+					if(output.length == 0) {output.push([i,j,k]);}
+					else if(output.length>0)
 					{
-						output.push([i,j,k]);
+						if(checkSwap(output, i, j, k))
+						{
+							output.push([i,j,k]);
+						}
 					}
 				}
 			}
@@ -44,5 +59,3 @@ function checkSwap(item, i, j, k)
 	return true;
 }
 
-console.log("INPUT : " + input);
-console.log(output);

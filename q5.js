@@ -2,7 +2,13 @@
 (ex. var input =['aa','bba','cca','afgf','a245g']) 
 and it is included no character present case.
 */
+/*********************** INPUT******************/
 var input = ['aaaba','aab','abac','abaad','aabd']; // !!! change input here !!!
+/*********************** INPUT******************/
+
+
+
+
 var tempAllCharArr = [];
 var allCharArr = [];
 var eachCharArr = [];

@@ -12,6 +12,11 @@ and the others index will be '-1'
 var input = [1,2]; // !!! change index of 0 here !!!
 /*********************** INPUT******************/
 
+
+
+
+
+
 var indexMetrix = [];
 var inputMetrix = [];
 var output = [];
